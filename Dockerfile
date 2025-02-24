@@ -21,6 +21,9 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt \
     && pip install --no-cache-dir gunicorn  # Install Gunicorn
 
+# Add this to your Dockerfile
+RUN mkdir -p /app/data/ChromaDB_2
+
 # Copy the rest of the application code
 COPY . .
 
