@@ -1,0 +1,17 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Credentials
+/credentials/google_credentials.json
+/app/api_key.py
+
+# Ignore ChromaDB storage
+/data/ChromaDB_2
+
+# Ignore environment variables
+.env
+
+# Ignore Docker build files
+*.log
+.DS_Store

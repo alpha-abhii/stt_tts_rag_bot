@@ -1,0 +1,16 @@
+chromadb
+langchain-google-genai
+langchain-chroma
+langchain_community
+langchain_core
+regex
+pyaudio==0.2.14
+SpeechRecognition==3.14.1
+google-cloud-speech
+google-cloud-texttospeech
+pydub
+pygame
+wave
+Flask
+pypdf
+
