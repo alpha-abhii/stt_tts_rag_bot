@@ -14,4 +14,5 @@ wave
 Flask
 pypdf
 google-cloud-storage
+gunicorn
 
