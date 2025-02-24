@@ -120,10 +120,10 @@ import os
 from google.cloud import storage
 
 # Constants for configuration
-CHROMA_DB_PATH = "data/ChromaDB_2"
+CHROMA_DB_PATH = "./data/ChromaDB_2"
 COLLECTION_NAME = "Minisoft_data3"
 GCS_BUCKET_NAME = os.getenv("CHROMADB_BUCKET", "chromadb-data-bucket")  # GCS bucket name
-GCS_CHROMADB_FOLDER = "ChromaDB_2"  # Folder in GCS where ChromaDB data is stored
+GCS_CHROMADB_FOLDER = "data/ChromaDB_2"  # Folder in GCS where ChromaDB data is stored
 
 def download_chromadb_from_gcs():
     """
