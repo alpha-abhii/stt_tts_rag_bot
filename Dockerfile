@@ -18,17 +18,14 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir setuptools wheel \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir gunicorn  # Install Gunicorn
 
 # Copy the rest of the application code
 COPY . .
 
-# Set environment variables (if not using Secret Manager)
-# ENV GOOGLE_API_KEY=your_api_key
-# ENV GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+# Expose the port Cloud Run expects
+EXPOSE 8080
 
-# Expose the port your app runs on
-EXPOSE 5000
-
-# Command to run the application
-CMD ["python", "main.py"]
+# Start the application using Gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "main:app"]
