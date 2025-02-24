@@ -1,6 +1,11 @@
 # Use an official Python runtime as the base image
 FROM python:3.9-slim
 
+# Install system dependencies required for pyaudio
+RUN apt-get update && apt-get install -y \
+    portaudio19-dev \
+    && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
+
 # Set the working directory in the container
 WORKDIR /app
 
