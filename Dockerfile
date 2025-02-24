@@ -1,9 +1,12 @@
 # Use an official Python runtime as the base image
 FROM python:3.9-slim
 
-# Install system dependencies required for pyaudio
+# Install system dependencies required for PyAudio
 RUN apt-get update && apt-get install -y \
+    build-essential \
     portaudio19-dev \
+    python3-dev \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
 # Set the working directory in the container
@@ -13,7 +16,9 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
 COPY . .
